@@ -1,35 +1,53 @@
 package edu.projeto.integrador.imdaz.model;
 
-
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-
 public class Aluno extends Pessoa {
     private String escola;
     private String matricula;
-    private boolean possuiAgua;
-    private boolean possuiLuz;
+    private boolean possui_laudo;
     private double mediaNotas;
-    private String anoLetivo;  // Corrigi para anoLetivo (letras minúsculas, por convenção)
-    private Responsavel responsavel;  // Responsável do aluno
+    private String anoLetivo;
 
-    // Construtor manual com todos os parâmetros
-    public Aluno(String nome, String escola, String matricula, boolean possuiAgua, boolean possuiLuz, double mediaNotas, String anoLetivo, Responsavel responsavel) {
-        super(nome);  // Chama o construtor da classe Pessoa (nome é herdado de Pessoa)
+    // Construtor completo com herança
+    public Aluno(int pessoaId, String escola, String matricula, Boolean possuiLaudo, double mediaNotas, String anoLetivo, int enderecoId) {
+        this.setPessoaId(pessoaId); // herdado de Pessoa
+        this.setEnderecoId(enderecoId); // herdado de Pessoa
         this.escola = escola;
         this.matricula = matricula;
-        this.possuiAgua = possuiAgua;
-        this.possuiLuz = possuiLuz;
+        this.possui_laudo = possuiLaudo;
         this.mediaNotas = mediaNotas;
         this.anoLetivo = anoLetivo;
-        this.responsavel = responsavel;
+    }
+
+    // Construtor alternativo com um objeto Pessoa
+    public Aluno(String escola, String matricula, boolean possui_laudo, double mediaNotas, String anoLetivo, Pessoa pessoa) {
+        this.escola = escola;
+        this.matricula = matricula;
+        this.possui_laudo = possui_laudo;
+        this.mediaNotas = mediaNotas;
+        this.anoLetivo = anoLetivo;
+        this.setPessoaId(pessoa.getPessoaId()); // herdado de Pessoa
+        this.setEnderecoId(pessoa.getEnderecoId()); // herdado de Pessoa
+        this.setNome(pessoa.getNome());
+        this.setDataNascimento(pessoa.getDataNascimento());
+        this.setTelefone(pessoa.getTelefone());
+        this.setGenero(pessoa.getGenero());
     }
 
     @Override
     public String toString() {
-        return "Aluno: " + getNome() + ", Escola: " + escola + ", Matrícula: " + matricula + ", Responsável: " + (responsavel != null ? responsavel.getNome() : "Não informado");
+        return "Aluno{" +
+                "pessoaId=" + getPessoaId() +
+                ", nome='" + getNome() + '\'' +
+                ", escola='" + escola + '\'' +
+                ", matricula='" + matricula + '\'' +
+                ", possui_laudo=" + possui_laudo +
+                ", mediaNotas=" + mediaNotas +
+                ", anoLetivo='" + anoLetivo + '\'' +
+                '}';
     }
 }

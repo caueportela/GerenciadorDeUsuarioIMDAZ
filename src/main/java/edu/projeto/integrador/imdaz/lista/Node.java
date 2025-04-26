@@ -1,7 +1,6 @@
 package edu.projeto.integrador.imdaz.lista;
-
 import edu.projeto.integrador.imdaz.model.Aluno;
-
+// Nó da lista encadeada
 public class Node {
     private Aluno aluno;
     private Node proximo;

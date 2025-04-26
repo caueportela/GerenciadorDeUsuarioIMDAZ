@@ -5,43 +5,43 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Getter
 @Setter
-@AllArgsConstructor
+// Construtor com todos os parâmetros
 public class Pessoa {
+    private int pessoaId;  // O ID da pessoa que é gerado pelo banco de dados
     private String nome;
-    private boolean recebeBolsa;
     private Date dataNascimento;
-    private boolean alfabetizado;
-    private String endereco;
-    private String documento;
     private String telefone;
     private Genero genero;
+    private int enderecoId;  // ID do endereço, necessário para a inserção no banco
+
+    public Pessoa(String nome, Date dataNascimento, String telefone, Genero genero, int enderecoId) {
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;  // Agora a data é do tipo Date
+        this.telefone = telefone;
+        this.genero = genero;
+        this.enderecoId = enderecoId;
+    }
 
     public Pessoa() {
 
     }
-//Construtor = utilizado para inicializar os objetos
 
-    public Pessoa(String nome, Genero genero, boolean recebeBolsa, Date dataNascimento, boolean alfabetizado, String endereco, String documento, String telefone) {
-        this.nome = nome;   // Palavra this é utilizado para acessar o atributo dentro da classe Pessoa
-        this.genero = genero;
-        this.recebeBolsa = recebeBolsa;
-        this.dataNascimento = dataNascimento;
-        this.alfabetizado = alfabetizado;
-        this.endereco = endereco;
-        this.documento = documento;
-        this.telefone = telefone;
+    @Override
+    public String toString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return "Pessoa{" +
+                "pessoaId=" + pessoaId +
+                ", nome='" + nome + '\'' +
+                ", dataNascimento=" + sdf.format(dataNascimento) +
+                ", telefone='" + telefone + '\'' +
+                ", genero=" + genero +
+                ", enderecoId=" + enderecoId +
+                '}';
     }
-@Override
-public String toString() {
-        return "Nome: " + nome;
+
 }
-
-    public Pessoa(String nome) {
-    }
-}
-
-
