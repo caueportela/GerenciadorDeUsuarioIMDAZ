@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+//Getters e Setters para acessar os atributos de alunos em outras classes.
 public class Aluno extends Pessoa {
     private String escola;
     private String matricula;

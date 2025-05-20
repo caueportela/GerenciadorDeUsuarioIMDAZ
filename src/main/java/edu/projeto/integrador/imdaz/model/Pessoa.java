@@ -10,7 +10,8 @@ import java.util.Date;
 
 @Getter
 @Setter
-// Construtor com todos os parâmetros
+//Getters e Setters para acessar os atributos de alunos em outras classes.
+
 public class Pessoa {
     private int pessoaId;  // O ID da pessoa que é gerado pelo banco de dados
     private String nome;
@@ -19,6 +20,8 @@ public class Pessoa {
     private Genero genero;
     private int enderecoId;  // ID do endereço, necessário para a inserção no banco
 
+
+    // Construtor com todos os parâmetros
     public Pessoa(String nome, Date dataNascimento, String telefone, Genero genero, int enderecoId) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;  // Agora a data é do tipo Date

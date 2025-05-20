@@ -7,6 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+//Getters e Setters para acessar os atributos de alunos em outras classes.
 @NoArgsConstructor
 @AllArgsConstructor
 
